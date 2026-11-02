@@ -2,6 +2,8 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Jashn-e-Infolabz · A Diwali Evening</title>
+<meta name="description" content="Step into Jashn-e-Infolabz, a festive Diwali evening with music, games, lights, and a lively 3D office celebration.">
+<meta name="theme-color" content="#150803">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
 <style>
@@ -9,6 +11,8 @@
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#150803;--fg:#fff3df;--panel:rgba(32,13,4,.84)}}
 :root[data-theme="dark"]{--bg:#150803;--fg:#fff3df}
 html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;overflow:hidden}
+button,input{font:inherit}
+button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid #ffe08a;outline-offset:3px}
 canvas#c{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none}
 .top{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;padding:14px 16px;display:flex;justify-content:flex-end;align-items:flex-start;gap:12px;pointer-events:none;z-index:2}
 .top>*{pointer-events:auto}
@@ -63,6 +67,9 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 body.drop::after{content:"Drop songs to add them";position:fixed;inset:12px;border:2px dashed var(--ac);border-radius:22px;background:rgba(21,8,3,.7);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;z-index:9;pointer-events:none}
 #toast{position:fixed;left:50%;top:calc(170px + env(safe-area-inset-top,0px));transform:translate(-50%,-8px);background:rgba(0,0,0,.86);color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:8px 16px;font-size:13px;opacity:0;transition:.3s;pointer-events:none;z-index:4;max-width:90vw;text-align:center}
 #toast.show{opacity:1;transform:translate(-50%,0)}
+.guide{position:fixed;left:50%;bottom:calc(74px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:2;display:flex;align-items:center;gap:10px;max-width:calc(100vw - 28px);padding:9px 12px;border:1px solid #ffffff2b;border-radius:999px;background:rgba(16,7,3,.78);backdrop-filter:blur(10px);color:#fff3df;font-size:12px;line-height:1.35;text-align:center;box-shadow:0 6px 24px #0008}
+.guide button{flex:none;border:0;border-radius:50%;width:26px;height:26px;background:#ffffff16;color:inherit;cursor:pointer}
+.guide[hidden]{display:none}
 .hint{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(196px + env(safe-area-inset-bottom,0px));width:min(94vw,860px);display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;font-size:12px;font-weight:500;color:#fff;pointer-events:none;text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 12px rgba(0,0,0,.6)}
 .hint span{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
 .hint kbd{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;line-height:1;background:rgba(0,0,0,.86);color:#fff;border:1px solid rgba(255,255,255,.22);border-radius:6px;padding:4px 7px;text-shadow:none;box-shadow:0 2px 8px rgba(0,0,0,.35)}
@@ -84,7 +91,7 @@ body.hideplayer .player{opacity:0!important;visibility:hidden!important;pointer-
 /* party menu: a hanging Diwali lantern opens a tidy grouped panel */
 .top{padding:0 14px!important}
 #mnu{position:relative;pointer-events:auto;background:none;border:0;padding:0 2px;cursor:pointer;display:flex;flex-direction:column;align-items:center;-webkit-tap-highlight-color:transparent;filter:drop-shadow(0 0 10px rgba(255,160,50,.55));transition:filter .4s,transform .3s}
-#mnu:hover,#mnu.open,#mnu:focus-visible{filter:drop-shadow(0 0 18px rgba(255,190,70,.95));outline:none}
+#mnu:hover,#mnu.open,#mnu:focus-visible{filter:drop-shadow(0 0 18px rgba(255,190,70,.95))}
 #mnu:active{transform:scale(.96)}
 #mnu svg{display:block;overflow:visible}
 .ln-sw{transform-box:view-box;transform-origin:32px 0;animation:lnsw 4.2s ease-in-out infinite}
@@ -93,7 +100,7 @@ body.hideplayer .player{opacity:0!important;visibility:hidden!important;pointer-
 @keyframes lnfl{0%,100%{opacity:.82;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
 #mnu.open .ln-sw{animation-duration:2s}
 .mcap{font:700 9px system-ui,sans-serif;letter-spacing:.22em;color:#ffd27a;margin-top:-4px;text-shadow:0 1px 6px #000}
-#menu{position:absolute;top:96px;right:14px;width:min(330px,calc(100vw - 28px));box-sizing:border-box;background:var(--panel);border:1px solid #5b3a1c;border-radius:20px;padding:10px 12px 12px;backdrop-filter:blur(14px);box-shadow:0 14px 44px #000b;opacity:0;visibility:hidden;transform:translateY(-10px) scale(.96);transform-origin:92% 0;transition:opacity .25s,transform .25s,visibility .25s;pointer-events:none}
+#menu{position:absolute;top:96px;right:14px;width:min(330px,calc(100vw - 28px));max-height:calc(100dvh - 120px);overflow-y:auto;overscroll-behavior:contain;box-sizing:border-box;background:var(--panel);border:1px solid #5b3a1c;border-radius:20px;padding:10px 12px 12px;backdrop-filter:blur(14px);box-shadow:0 14px 44px #000b;opacity:0;visibility:hidden;transform:translateY(-10px) scale(.96);transform-origin:92% 0;transition:opacity .25s,transform .25s,visibility .25s;pointer-events:none}
 #menu.open{opacity:1;visibility:visible;transform:none;pointer-events:auto}
 #menu h4{margin:6px 4px 8px;font:700 11px system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--mut,#c9a679)}
 #menu .mgrp+.mgrp{border-top:1px solid #ffffff14;margin-top:10px;padding-top:2px}
@@ -104,8 +111,9 @@ body.hideplayer .player{opacity:0!important;visibility:hidden!important;pointer-
 #q{top:calc(100px + env(safe-area-inset-top,0px))!important}
 
 /* help panel */
-#help{position:fixed;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;padding:18px;box-sizing:border-box;background:rgba(10,4,1,.62);backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+#help{position:fixed;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;padding:18px;box-sizing:border-box;background:rgba(10,4,1,.62);backdrop-filter:blur(6px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s,visibility .25s}
 #help.open{opacity:1;visibility:visible}
+#help.open{pointer-events:auto}
 .hcard{width:min(640px,100%);max-height:min(84vh,780px);overflow:auto;box-sizing:border-box;background:var(--panel);border:1px solid #5b3a1c;border-radius:22px;padding:16px 20px 18px;box-shadow:0 20px 60px #000c;color:var(--fg)}
 .hhead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:4px}
 .hhead h2{margin:0;font:700 22px Georgia,serif;color:var(--ac,#f4a300)}
@@ -121,6 +129,8 @@ body.hideplayer .player{opacity:0!important;visibility:hidden!important;pointer-
 .hc{font-size:12px;padding:4px 10px;border-radius:14px;background:rgba(0,0,0,.3);border:1px solid #5b3a1c;color:var(--mut,#c9a679)}
 .hc b{font:700 12px ui-monospace,Menlo,Consolas,monospace;color:#ffd27a;margin-right:4px}
 @media(max-width:560px){.hk{flex-basis:96px}.hrow{font-size:13px}}
+@media(max-width:560px){#menu{top:90px;right:10px;max-height:calc(100dvh - 104px)}.hcard{max-height:calc(100dvh - 28px);padding:14px}.player{bottom:calc(10px + env(safe-area-inset-bottom,0px))}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 
 /* mini music player: a slim glass pill, hidden until you press H or use the menu */
 .player{left:14px;right:auto;transform:none;bottom:calc(14px + env(safe-area-inset-bottom,0px));width:min(236px,calc(100vw - 28px));box-sizing:border-box;padding:7px 9px 9px 7px;border-radius:24px;
@@ -160,7 +170,7 @@ body.hideplayer .player{transform:translateY(14px) scale(.96)}
 body:not(.hideplayer) .hint{bottom:calc(74px + env(safe-area-inset-bottom,0px))}
 @media(max-width:560px){.player{left:50%;transform:translateX(-50%)}body.hideplayer .player{transform:translate(-50%,14px) scale(.96)}body:not(.hideplayer) .hint{bottom:calc(74px + env(safe-area-inset-bottom,0px))}}
 </style></head>
-<body class="hideplayer">
+<body>
 <canvas id="c"></canvas>
 <header class="title">
   <div class="kick">A Diwali Evening</div>
@@ -189,7 +199,7 @@ body:not(.hideplayer) .hint{bottom:calc(74px + env(safe-area-inset-bottom,0px))}
     </svg>
     <span class="mcap">MENU</span>
   </button>
-  <div id="menu" role="menu" aria-hidden="true">
+  <div id="menu" aria-label="Party menu" aria-hidden="true" inert>
     <div class="mgrp"><h4>🪔 Celebrate</h4><div class="mrow">
       <button class="chip" id="fin" title="Grand Finale — close the party">🎆 Finale</button>
       <button class="chip" id="dn" aria-pressed="false" title="Dance mode (D)">💃 Dance</button>
@@ -209,9 +219,10 @@ body:not(.hideplayer) .hint{bottom:calc(74px + env(safe-area-inset-bottom,0px))}
     </div></div>
   </div>
 </div>
-<div id="q"></div>
+<div id="q" aria-label="Music queue"></div>
+<div class="guide" id="guide"><span>Drag to look around · scroll or pinch to zoom · open the lantern for music and activities</span><button type="button" id="guide-close" aria-label="Dismiss tips">×</button></div>
 <div id="sec"><input id="secin" type="text" placeholder="Secret code…" autocomplete="off" autocapitalize="off" spellcheck="false"><button id="secx" aria-label="Close">✕</button></div>
-<div id="help" role="dialog" aria-modal="true" aria-labelledby="htitle" aria-hidden="true">
+<div id="help" role="dialog" aria-modal="true" aria-labelledby="htitle" aria-hidden="true" inert>
   <div class="hcard">
     <div class="hhead"><h2 id="htitle">Help &amp; shortcuts</h2><button id="hx" aria-label="Close help">✕</button></div>
     <div class="hgrp"><h3>🖱 Look around</h3>
@@ -244,14 +255,15 @@ body:not(.hideplayer) .hint{bottom:calc(74px + env(safe-area-inset-bottom,0px))}
   </div>
   <div class="pl-more">
     <span id="cu">0:00</span><span class="fare" id="fare">TRACK 01/01</span><span id="du">0:00</span>
-    <button id="sh" title="Shuffle" aria-label="Shuffle">🔀</button>
-    <button id="rp" title="Repeat" aria-label="Repeat">🔁</button>
+    <button id="sh" title="Shuffle" aria-label="Shuffle" aria-pressed="false">🔀</button>
+    <button id="rp" title="Repeat off" aria-label="Repeat off" aria-pressed="false">🔁</button>
     <div class="vol" title="Volume">🔊<input id="vol" type="range" min="0" max="100" value="80" aria-label="Volume"></div>
     <button id="pmx" title="Hide player (H)" aria-label="Hide player">✕</button>
   </div>
   <input id="seek" type="range" min="0" max="1000" value="0" aria-label="Seek">
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<div id="startup-error" role="alert" hidden style="position:fixed;inset:0;z-index:100;background:#150803;color:#fff3df;padding:12vh 8vw;text-align:center;font:16px/1.6 system-ui,sans-serif"><h1>Jashn-e-Infolabz couldn’t start</h1><p>The 3D scene library didn’t load. Check your internet connection, then refresh the page.</p><button class="chip" onclick="location.reload()">Try again</button></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" onerror="document.getElementById('startup-error').hidden=false"></script>
 <script>
 const $=s=>document.querySelector(s), pad=n=>String(n).padStart(2,"0");
 const fmt=s=>{s=Math.max(0,s|0);return Math.floor(s/60)+":"+pad(s%60)};
@@ -261,6 +273,7 @@ const fmt=s=>{s=Math.max(0,s|0);return Math.floor(s/60)+":"+pad(s%60)};
    until you remove them from the Queue. Nothing is uploaded anywhere — the music never leaves this device. */
 let tracks=[],cur=0,playing=false;
 const pref={get:(k,d)=>{try{const v=localStorage.getItem(k);return v===null?d:JSON.parse(v)}catch(e){return d}},set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+if(pref.get("hideplayer",true))document.body.classList.add("hideplayer");
 let shuffle=pref.get("shuffle",false),rep=pref.get("repeat",0);
 const au=new Audio();au.preload="auto";au.volume=pref.get("volume",80)/100;$("#vol").value=Math.round(au.volume*100);
 const T=()=>tracks[cur]||null;
@@ -357,18 +370,20 @@ function ui(){
   $("#tt").textContent=t?(playing?"Now playing":"Paused"):"No songs yet";$("#ta").textContent=t?"Jashn-e-Infolabz · Diwali mix":"Tap “Add songs” to choose your music";
   $("#fare").textContent=t?"TRACK "+pad(cur+1)+"/"+pad(tracks.length):"NO SONGS";
   $("#pp").textContent=playing?"⏸":"▶";$("#disc").classList.toggle("spin",playing);
-  $("#sh").classList.toggle("on",shuffle);$("#rp").classList.toggle("on",rep>0);$("#rp").textContent=rep===2?"🔂":"🔁";
+  $("#sh").classList.toggle("on",shuffle);$("#sh").setAttribute("aria-pressed",shuffle);$("#rp").classList.toggle("on",rep>0);$("#rp").setAttribute("aria-pressed",rep>0);$("#rp").title=rep===2?"Repeat one":rep===1?"Repeat all":"Repeat off";$("#rp").setAttribute("aria-label",$("#rp").title);$("#rp").textContent=rep===2?"🔂":"🔁";
   $("#qb").textContent="☰ Queue"+(tracks.length?" · "+tracks.length:"");
   $("#q").innerHTML=tracks.length
     ?`<div class="qh"><span>${tracks.length} song${tracks.length>1?"s":""} saved in this browser</span><button class="qclear">${clearArmed?"Tap again to remove all":"Remove all"}</button></div>`+
-     tracks.map((x,i)=>`<div class="qi${i===cur?" cur":""}" data-i="${i}"><span class="qn">${i===cur&&playing?"♪":i+1}</span><span class="qt" title="${esc(x.t)}">${esc(x.t)}</span><button class="qx" data-x="${i}" title="Remove from list" aria-label="Remove ${esc(x.t)}">✕</button></div>`).join("")
+     tracks.map((x,i)=>`<div class="qi${i===cur?" cur":""}" data-i="${i}" role="group"><span class="qn">${i===cur&&playing?"♪":i+1}</span><span class="qt" role="button" tabindex="0" aria-label="Play ${esc(x.t)}" title="${esc(x.t)}">${esc(x.t)}</span><button class="qx" data-x="${i}" title="Remove from list" aria-label="Remove ${esc(x.t)}">✕</button></div>`).join("")
     :`<div class="qe">Your list is empty.<br>Tap <b>Add songs</b> and select as many songs as you like — they stay here after refresh until you remove them.</div>`;
 }
 $("#q").onclick=e=>{
   const x=e.target.closest(".qx");if(x){e.stopPropagation();removeAt(+x.dataset.x);return}
   if(e.target.closest(".qclear")){if(clearArmed){clearArmed=0;removeAll()}else{clearArmed=1;ui();setTimeout(()=>{if(clearArmed){clearArmed=0;ui()}},5000)}return}
   const d=e.target.closest("[data-i]");if(d)load(+d.dataset.i,true)};
-$("#qb").onclick=()=>$("#q").classList.toggle("open");
+$("#q").onkeydown=e=>{const row=e.target.closest("[data-i]");if(row&&(e.key==="Enter"||e.key===" ")&&e.target.matches("[role=button]")&&!e.target.closest(".qx")){e.preventDefault();load(+row.dataset.i,true)}if(e.key==="Escape"){$("#q").classList.remove("open");$("#qb").setAttribute("aria-expanded","false");$("#qb").focus()}};
+$("#qb").setAttribute("aria-controls","q");$("#qb").setAttribute("aria-expanded","false");
+$("#qb").onclick=()=>{const open=$("#q").classList.toggle("open");$("#qb").setAttribute("aria-expanded",open);if(open){const first=$("#q [data-i]");if(first)first.focus()}};
 $("#pp").onclick=()=>playing?pause():play();
 $("#nx").onclick=next;$("#pv").onclick=prev;
 $("#sh").onclick=()=>{shuffle=!shuffle;pref.set("shuffle",shuffle);ui()};
@@ -376,14 +391,15 @@ $("#rp").onclick=()=>{rep=(rep+1)%3;pref.set("repeat",rep);ui()};
 $("#vol").oninput=e=>{au.volume=e.target.value/100;pref.set("volume",+e.target.value)};
 $("#seek").oninput=e=>{const d=dur();if(d)seekTo(e.target.value/1000*d)};
 addEventListener("keydown",e=>{
-  if(e.target.tagName==="INPUT"&&e.target.type!=="range")return;
+  if(e.target.isContentEditable||e.target.closest("button,a,label,[role=button]")||["INPUT","TEXTAREA","SELECT"].includes(e.target.tagName))return;
   if(e.code==="Space"){e.preventDefault();playing?pause():play()}
   else if(e.key==="ArrowRight")seekTo(Math.min(dur(),pos()+5));
   else if(e.key==="ArrowLeft")seekTo(Math.max(0,pos()-5));
   else if(e.key==="n"||e.key==="N")next();else if(e.key==="p"||e.key==="P")prev();
   else if(e.key==="h"||e.key==="H")togglePlayerUI();
 });
-function togglePlayerUI(){const h=document.body.classList.toggle("hideplayer"),b=$("#hp");if(h)$(".player").classList.remove("more");if(b)b.innerHTML=h?"🎵 Show music player <small>(H)</small>":"👁 Hide music player <small>(H)</small>";toast(h?"Music player hidden · press H to show it again":"Music player shown · press H to hide it")}
+$("#guide-close").onclick=()=>{$("#guide").hidden=true;pref.set("guideDismissed",true)};if(pref.get("guideDismissed",false))$("#guide").hidden=true;
+function togglePlayerUI(){const h=document.body.classList.toggle("hideplayer"),b=$("#hp");pref.set("hideplayer",h);if(h)$(".player").classList.remove("more");if(b)b.innerHTML=h?"🎵 Show music player <small>(H)</small>":"👁 Hide music player <small>(H)</small>";toast(h?"Music player hidden · press H to show it again":"Music player shown · press H to hide it")}
 $("#songs").onchange=e=>{addFiles(e.target.files);e.target.value=""};
 {const tgl=()=>$(".player").classList.toggle("more");$("#disc").onclick=tgl;$("#disc").onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();e.stopPropagation();tgl()}};$("#pmx").onclick=()=>togglePlayerUI()}
 addEventListener("dragover",e=>{e.preventDefault();document.body.classList.add("drop")});
@@ -419,7 +435,8 @@ const rr=(a,b)=>a+Math.random()*(b-a),rp=a=>a[Math.floor(Math.random()*a.length)
 const lin=c=>new THREE.Color(c).convertSRGBToLinear();
 const angLerp=(a,b,t)=>{const d=((b-a+Math.PI)%TAU+TAU)%TAU-Math.PI;return a+d*t};
 
-const R=new THREE.WebGLRenderer({canvas:$("#c"),antialias:true,powerPreference:"high-performance"});
+if(!window.THREE){$("#startup-error").hidden=false;throw new Error("Three.js did not load")}
+let R;try{R=new THREE.WebGLRenderer({canvas:$("#c"),antialias:!matchMedia("(pointer:coarse)").matches,powerPreference:"high-performance"})}catch(e){$("#startup-error").hidden=false;throw e}
 R.setPixelRatio(Math.min(devicePixelRatio,LOW?1.5:2));
 R.outputEncoding=THREE.sRGBEncoding;R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=.8;
 R.shadowMap.enabled=!LOW;R.shadowMap.type=THREE.PCFSoftShadowMap;
@@ -1058,7 +1075,7 @@ function setDance(on){if(on&&GAME.st!=="off")return;if(on&&FX.cur)endFX(true);
     const st=PEOPLE.filter(p=>!p.hidden&&p.seat===undefined);if(st.length)say(rp(st),"dance")}
   else danceOff()}
 $("#dn").onclick=()=>setDance(!DANCE.on);
-addEventListener("keydown",e=>{if(e.target.tagName==="INPUT"&&e.target.type!=="range")return;if(e.key==="d"||e.key==="D")setDance(!DANCE.on)});
+addEventListener("keydown",e=>{if(e.target.isContentEditable||e.target.closest("button,a,label,[role=button]")||["INPUT","TEXTAREA","SELECT"].includes(e.target.tagName))return;if(e.key==="d"||e.key==="D")setDance(!DANCE.on)});
 
 function beatTick(dt){const B=BEAT;
   if(B.an&&playing){B.an.getByteFrequencyData(B.data);let e=0;for(let i=1;i<7;i++)e+=B.data[i];e/=6*255;
@@ -1691,7 +1708,7 @@ const CODES={chai:()=>setChai(!CHAI.on),nasta:()=>setNasta(!NASTA.on),nashta:()=
 const SECRET={buf:"",timer:0};
 function runCode(c){c=String(c||"").toLowerCase().replace(/[^a-z]/g,"");if(CODES[c]){CODES[c]();return true}return false}
 addEventListener("keydown",e=>{
-  if((e.target.tagName==="INPUT"&&e.target.type!=="range")||e.ctrlKey||e.metaKey||e.altKey||e.key.length!==1||!/[a-z]/i.test(e.key))return;
+  if(e.target.isContentEditable||e.target.closest("button,a,label,[role=button]")||["INPUT","TEXTAREA","SELECT"].includes(e.target.tagName)||e.ctrlKey||e.metaKey||e.altKey||e.key.length!==1||!/[a-z]/i.test(e.key))return;
   const k=e.key.toLowerCase();SECRET.buf=(SECRET.buf+k).slice(-24);
   const hit=Object.keys(CODES).find(c=>SECRET.buf.endsWith(c));
   if(hit){clearTimeout(SECRET.timer);SECRET.buf="";e.stopImmediatePropagation();CODES[hit]();return}
@@ -1830,16 +1847,17 @@ const ILA=(()=>{
 })();
 
 /* party menu (hanging lantern toggle) */
-{const mn=$("#mnu"),mm=$("#menu"),set=o=>{mm.classList.toggle("open",o);mn.classList.toggle("open",o);mn.setAttribute("aria-expanded",o);mm.setAttribute("aria-hidden",!o)};
+{const mn=$("#mnu"),mm=$("#menu"),set=o=>{mm.classList.toggle("open",o);mn.classList.toggle("open",o);mn.setAttribute("aria-expanded",o);mm.setAttribute("aria-hidden",!o);mm.inert=!o;if(o)mm.querySelector("button,label").focus();else if(!$("#help").classList.contains("open"))mn.focus()};
   mn.onclick=()=>set(!mm.classList.contains("open"));
   mm.addEventListener("click",e=>{if(e.target.closest("button,label"))setTimeout(()=>set(false),180)});
   addEventListener("pointerdown",e=>{if(mm.classList.contains("open")&&!e.target.closest("#menu,#mnu"))set(false)});
-  addEventListener("keydown",e=>{if(e.key==="Escape"&&mm.classList.contains("open"))set(false)});
+  addEventListener("keydown",e=>{if(e.key==="Escape"&&mm.classList.contains("open")){e.stopImmediatePropagation();set(false)}});
   $("#hp").onclick=()=>togglePlayerUI()}
 /* help panel */
-{const hp=$("#help"),set=o=>{hp.classList.toggle("open",o);hp.setAttribute("aria-hidden",!o)};
-  $("#hlp").onclick=()=>set(true);$("#hx").onclick=()=>set(false);hp.addEventListener("pointerdown",e=>{if(e.target===hp)set(false)});
-  addEventListener("keydown",e=>{if(e.target.tagName==="INPUT"&&e.target.type!=="range")return;
+{const hp=$("#help"),opener=$("#hlp"),close=$("#hx"),set=o=>{hp.classList.toggle("open",o);hp.setAttribute("aria-hidden",!o);hp.inert=!o;if(o)close.focus();else opener.focus()};
+  opener.onclick=()=>set(true);close.onclick=()=>set(false);hp.addEventListener("pointerdown",e=>{if(e.target===hp)set(false)});
+  hp.addEventListener("keydown",e=>{if(e.key!=="Tab")return;const items=[...hp.querySelectorAll("button:not([disabled]),a[href],input:not([disabled]),[tabindex]:not([tabindex='-1'])")];if(!items.length)return;const first=items[0],last=items[items.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}});
+  addEventListener("keydown",e=>{if(e.target.isContentEditable||e.target.closest("button,a,label,[role=button]")||["INPUT","TEXTAREA","SELECT"].includes(e.target.tagName))return;
     if(e.key==="?"){e.preventDefault();set(!hp.classList.contains("open"))}
     else if(e.key==="Escape"&&hp.classList.contains("open")){e.stopImmediatePropagation();set(false)}},true)}
 /* ---------- GAME TIME: SurMoji + Tambola on the projector ----------
@@ -1865,7 +1883,7 @@ function gameSplash(){const g=scrG,w=1024,h=576,tm=GAME.name==="tambola";SCR_MAT
   g.font="64px sans-serif";g.fillText(tm?"🎯 🪔 🎉":"🎬 🎵 🎮",w/2,360);g.font="bold 34px Arial";g.fillStyle="#ffd27a";g.fillText(tm?"HOUSIE TIME":"GAME TIME",w/2,440);scrTex.needsUpdate=true}
 function gameAudio(){if(GAMES[GAME.name].quiet){if(playing){GAME.resume=true;pause()}}
   else{if(GAME.resume&&tracks.length&&!playing){play();GAME.resume=false}duck(true)}}
-function openFrame(){if(gif)gif.remove();gif=document.createElement("iframe");gif.title=GAME.name;gif.allow="autoplay; encrypted-media; fullscreen";gif.src=gameUrl(GAME.name);
+function openFrame(){if(gif)gif.remove();gif=document.createElement("iframe");gif.title=GAME.name==="surmoji"?"SurMoji game":"Tambola game";gif.allow="autoplay; encrypted-media; fullscreen";gif.src=gameUrl(GAME.name);
   gWrap.insertBefore(gif,gWrap.firstChild);gWrap.classList.add("show");requestAnimationFrame(()=>gWrap.classList.add("live"));GAME.st="ready"}
 function announce(){const G=GAMES[GAME.name];toast(G.toast);ILA.say([G.say])}
 function startGame(n){
