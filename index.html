@@ -78,14 +78,6 @@ body.drop::after{content:"Drop songs to add them";position:fixed;inset:12px;bord
 #gmw.live #gmx{opacity:1;pointer-events:auto}
 body.gaming .title,body.gaming .top,body.gaming .player,body.gaming .hint,body.gaming #q{opacity:0!important;visibility:hidden;pointer-events:none}
 
-/* Director's Diya (Ujval Diya) */
-#dyh{position:fixed;left:50%;bottom:calc(28px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(22px);z-index:6;background:linear-gradient(135deg,#ffcf6a,#e08a00);color:#3a2200;border:0;border-radius:28px;padding:14px 24px;font:700 15px system-ui,sans-serif;cursor:pointer;box-shadow:0 0 0 0 rgba(255,190,70,.7),0 8px 28px #000a;opacity:0;pointer-events:none;transition:opacity .6s,transform .6s;animation:dyp 1.7s ease-out infinite}
-#dyh.show{opacity:1;pointer-events:auto;transform:translateX(-50%)}
-@keyframes dyp{70%{box-shadow:0 0 0 20px rgba(255,190,70,0),0 8px 28px #000a}100%{box-shadow:0 0 0 0 rgba(255,190,70,0),0 8px 28px #000a}}
-#dyx{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:14px;z-index:6;background:var(--panel);color:var(--fg);border:1px solid #5b3a1c;border-radius:20px;padding:8px 14px;font-size:13px;cursor:pointer;backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .5s}
-body.diyamode #dyx{opacity:1;pointer-events:auto}
-body.diyamode .title,body.diyamode .top,body.diyamode .player,body.diyamode .hint,body.diyamode #q{opacity:0!important;visibility:hidden;pointer-events:none}
-
 /* H key: hide / show the music player */
 body.hideplayer .player{opacity:0!important;visibility:hidden!important;pointer-events:none!important}
 
@@ -199,7 +191,6 @@ body:not(.hideplayer) .hint{bottom:calc(74px + env(safe-area-inset-bottom,0px))}
   </button>
   <div id="menu" role="menu" aria-hidden="true">
     <div class="mgrp"><h4>🪔 Celebrate</h4><div class="mrow">
-      <button class="chip" id="dyb" title="Director's Diya: Chintan Sir lights the first diya">🪔 Ujval Diya</button>
       <button class="chip" id="fin" title="Grand Finale — close the party">🎆 Finale</button>
       <button class="chip" id="dn" aria-pressed="false" title="Dance mode (D)">💃 Dance</button>
       <button class="chip" id="snap" title="Download the group selfie">📸 Save selfie</button>
@@ -234,7 +225,7 @@ body:not(.hideplayer) .hint{bottom:calc(74px + env(safe-area-inset-bottom,0px))}
     </div>
     <div class="hgrp"><h3>⌨ Typed codes</h3>
       <p class="hnote">Just type the word anywhere (no Enter). On a phone, tap the title 5 times to open the code box. Typing it again turns it off.</p>
-      <div class="hcodes"><span class="hc"><b>chai</b> chai break</span><span class="hc"><b>nasta</b> snack break</span><span class="hc"><b>naagin</b> Naagin dance mode</span><span class="hc"><b>patakha</b> crackers</span><span class="hc"><b>laddoo</b> laddoo rain</span><span class="hc"><b>selfie</b> group selfie at the logo wall</span><span class="hc"><b>bug</b> ILA fixes a bug</span><span class="hc"><b>rangoli</b> rangoli drawing</span><span class="hc"><b>lakshmi</b> Lakshmi ji's blessings</span><span class="hc"><b>finale</b> grand finale</span><span class="hc"><b>diya</b> Ujval Diya: Chintan Sir lights the first diya</span><span class="hc"><b>surmoji</b> SurMoji on the projector</span><span class="hc"><b>tambola</b> Tambola on the projector</span></div>
+      <div class="hcodes"><span class="hc"><b>chai</b> chai break</span><span class="hc"><b>nasta</b> snack break</span><span class="hc"><b>naagin</b> Naagin dance mode</span><span class="hc"><b>patakha</b> crackers</span><span class="hc"><b>laddoo</b> laddoo rain</span><span class="hc"><b>selfie</b> group selfie at the logo wall</span><span class="hc"><b>bug</b> ILA fixes a bug</span><span class="hc"><b>rangoli</b> rangoli drawing</span><span class="hc"><b>lakshmi</b> Lakshmi ji's blessings</span><span class="hc"><b>finale</b> grand finale</span><span class="hc"><b>surmoji</b> SurMoji on the projector</span><span class="hc"><b>tambola</b> Tambola on the projector</span></div>
     </div>
     <p class="hnote">The ☰ lantern menu at the top right has a button for every feature.</p>
   </div>
@@ -1696,7 +1687,7 @@ $("#fin").onclick=()=>startFX("finale");
    Add more codes here: name → function. */
 const CODES={chai:()=>setChai(!CHAI.on),nasta:()=>setNasta(!NASTA.on),nashta:()=>setNasta(!NASTA.on),
   naagin:()=>startFX("naagin"),nagin:()=>startFX("naagin"),patakha:()=>startFX("patakha"),pataka:()=>startFX("patakha"),patakhe:()=>startFX("patakha"),
-  laddoo:()=>startFX("laddoo"),laddu:()=>startFX("laddoo"),selfie:()=>startFX("selfie"),bug:()=>startFX("bug"),rangoli:()=>startFX("rangoli"),lakshmi:()=>startFX("lakshmi"),laxmi:()=>startFX("lakshmi"),finale:()=>startFX("finale"),diya:()=>startFX("diya"),ujval:()=>startFX("diya"),deepam:()=>startFX("diya"),game:()=>toggleGame("surmoji"),surmoji:()=>toggleGame("surmoji"),gametime:()=>toggleGame("surmoji"),tambola:()=>toggleGame("tambola"),tombola:()=>toggleGame("tambola")};
+  laddoo:()=>startFX("laddoo"),laddu:()=>startFX("laddoo"),selfie:()=>startFX("selfie"),bug:()=>startFX("bug"),rangoli:()=>startFX("rangoli"),lakshmi:()=>startFX("lakshmi"),laxmi:()=>startFX("lakshmi"),finale:()=>startFX("finale"),game:()=>toggleGame("surmoji"),surmoji:()=>toggleGame("surmoji"),gametime:()=>toggleGame("surmoji"),tambola:()=>toggleGame("tambola"),tombola:()=>toggleGame("tambola")};
 const SECRET={buf:"",timer:0};
 function runCode(c){c=String(c||"").toLowerCase().replace(/[^a-z]/g,"");if(CODES[c]){CODES[c]();return true}return false}
 addEventListener("keydown",e=>{
@@ -1838,156 +1829,6 @@ const ILA=(()=>{
   return{tick,st,root,body,say:l=>say(P,l),P};
 })();
 
-/* ---------- DIRECTOR'S DIYA · "Ujval Diya" ----------
-   The office goes dark. Chintan Sir walks in, the crowd gathers in two arcs (space kept clear around him), and ONLY when
-   you tap him (or the diya) does he light the first diya. The light then spreads diya by diya, along the fairy lights,
-   lanterns and across the whole room while ILA says "Shubh Deepavali". Runs only from the button / code: diya. */
-const UJC={x:.35,z:-.45},UJP=[.35,-1.2];
-const UJPATH=[[6.2,-9.5],[6.2,-7.5],[6.15,-6.9],[5.15,-6.25],[4.45,-4.6],[2.4,-3.7],[UJC.x,-2.7],UJP];
-const UJ={ph:"off",lit:false,tl:-1,tc:0,tLit:0,pi:1,x:0,z:0,rot:0,w:0,ret:0,fired:null,plopAt:0,ev:{},pp:0,crowd:[],path:null,struck:false};
-const UJN=["pelvis","spine","neck","head","shL","shR","elL","elR","hpL","hpR","knL","knR"];
-const ujG=(x,y,z,sz,c)=>{const m=new THREE.Sprite(new THREE.SpriteMaterial({map:glowTex,color:lin(c),transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,toneMapped:false}));m.position.set(x,y,z);m.scale.set(sz,sz,1);m.renderOrder=3;return m};
-const ujA=(g,m,x,y,z,par,o)=>{const k=add(g,m,x,y,z,o||{},par);k.castShadow=!LOW;k.receiveShadow=true;return k};
-// ceremony stand: brass diya + eight small diyas on a marigold-ringed table
-const UJS=new THREE.Group();UJS.position.set(UJC.x,0,UJC.z);UJS.visible=false;S.add(UJS);
-const UJT=[];let UJMF,UJMG,UJML;
-{const cloth=M(0x6e0b19,{roughness:.8}),gold=M(0xe0b040,{metalness:.85,roughness:.28}),m1=M(0xff8a14,{roughness:.8}),m2=M(0xffc21a,{roughness:.8}),clay=M(0xb4532a,{roughness:.85}),fl=MB(0xffd27a);
- ujA(cyl(.4,.44,.07,36),gold,0,.035,0,UJS);ujA(cyl(.27,.33,.8,28),cloth,0,.47,0,UJS);ujA(cyl(.38,.28,.07,36),gold,0,.885,0,UJS);ujA(cyl(.36,.36,.02,36),M(0xf6ecd8,{roughness:.9}),0,.93,0,UJS);
- for(let i=0;i<22;i++){const a=i/22*TAU;ujA(sph(.04,8,6),i%2?m1:m2,Math.cos(a)*.325,.955,Math.sin(a)*.325,UJS)}
- ujA(new THREE.SphereGeometry(1,28,12,0,TAU,HP,HP),gold,0,1.04,0,UJS,{s:[.15,.1,.15]});
- ujA(cyl(.14,.14,.006,28),M(0x4a2206,{roughness:.4}),0,1.036,0,UJS);ujA(cyl(.006,.006,.05,6),M(0xe8dcc0),0,1.065,0,UJS);
- UJMF=new THREE.Mesh(sph(.022,8,6),fl);UJMF.position.set(0,1.13,0);UJMF.scale.set(0,0,0);UJS.add(UJMF);
- UJMG=ujG(0,1.14,0,1.2,0xffa24a);UJMG.visible=false;UJS.add(UJMG);
- UJML=new THREE.PointLight(lin(0xffa24a),0,7,1.4);UJML.position.set(0,1.3,.1);UJS.add(UJML);
- for(let k=0;k<8;k++){const a=k/8*TAU,x=Math.cos(a)*.225,z=Math.sin(a)*.225;ujA(new THREE.SphereGeometry(1,16,8,0,TAU,HP,HP),clay,x,.985,z,UJS,{s:[.045,.03,.045]});
-   const f=new THREE.Mesh(sph(.012,8,6),fl);f.position.set(x,1.03,z);f.scale.set(0,0,0);UJS.add(f);const g=ujG(x,1.04,z,.3,0xffa24a);g.visible=false;UJS.add(g);UJT.push({f,g})}}
-// the Director: stylised avatar (short dark hair with side fade, thick brows, full trimmed beard, warm smile),
-// cream kurta + maroon Nehru jacket + marigold garland. Built from primitives, not a likeness scan.
-const UJD=(()=>{
-  const root=new THREE.Group();root.visible=false;root.scale.setScalar(1.03);S.add(root);
-  const j={root,pelvis:J(root,0,.93,0)};j.spine=J(j.pelvis,0,.03,0);j.neck=J(j.spine,0,.5,0);j.head=J(j.neck,0,.07,0);
-  for(const [sd,sx] of [["L",1],["R",-1]]){j["sh"+sd]=J(j.spine,sx*.205,.45,0);j["el"+sd]=J(j["sh"+sd],0,-.29,0);j["ha"+sd]=J(j["el"+sd],0,-.265,0);j["hp"+sd]=J(j.pelvis,sx*.088,-.03,0);j["kn"+sd]=J(j["hp"+sd],0,-.44,0);j["ft"+sd]=J(j["kn"+sd],0,-.44,0)}
-  const skin=M(0xb07f58,{roughness:.62}),hair=M(0x15100d,{roughness:.9}),beard=M(0x1c1511,{roughness:.95}),cream=M(0xf4ebd3,{roughness:.7}),jk=M(0x7a1230,{roughness:.55,side:THREE.DoubleSide}),
-    gold=M(0xd9ad3c,{metalness:.8,roughness:.3}),shoe=M(0x3a2418,{roughness:.5}),white=M(0xf3efe6,{roughness:.4}),iris=M(0x2a1608,{roughness:.3}),lip=M(0x8f4a3b,{roughness:.6}),mg1=M(0xff8a14,{roughness:.8}),mg2=M(0xffc21a,{roughness:.8});
-  const A=ujA;
-  A(cyl(.2,.17,.62,18),cream,0,.26,0,j.spine,{s:[1,1,.8]});A(cyl(.17,.225,.62,18),cream,0,-.28,0,j.pelvis,{s:[1,1,.84]});
-  A(new THREE.CylinderGeometry(.208,.186,.5,22,1,true,.52,TAU-1.04),jk,0,.29,0,j.spine,{s:[1,1,.8]});
-  [.12,.22,.32,.42].forEach(y=>A(sph(.012,8,6),gold,0,y,.162,j.spine));
-  A(cyl(.052,.056,.1,12),skin,0,.03,0,j.neck);A(cyl(.072,.076,.035,16),cream,0,-.01,0,j.neck);
-  for(const sd of ["L","R"]){A(sph(.062,12,10),cream,0,0,0,j["sh"+sd]);A(cyl(.054,.047,.29,12),cream,0,-.145,0,j["sh"+sd]);A(cyl(.047,.042,.265,12),cream,0,-.13,0,j["el"+sd]);A(sph(.044,12,10),skin,0,-.03,0,j["ha"+sd],{s:[.9,1.25,.7]});
-    A(cyl(.078,.064,.44,12),cream,0,-.22,0,j["hp"+sd]);A(cyl(.062,.052,.44,12),cream,0,-.22,0,j["kn"+sd]);A(sph(.062,12,8),shoe,0,-.04,.05,j["ft"+sd],{s:[.95,.7,1.9]})}
-  const hd=j.head;
-  A(sph(.112,26,18),skin,0,.13,0,hd,{s:[1,1.16,1.06]});A(sph(.095,18,12),skin,0,.06,.012,hd,{s:[1.02,.82,1]});
-  [-1,1].forEach(sd=>{A(sph(.05,12,10),skin,sd*.07,.1,.055,hd,{s:[1,.85,.85]});A(sph(.028,10,8),skin,sd*.116,.13,-.005,hd,{s:[.6,1.1,.8]});
-    A(sph(.017,10,8),white,sd*.042,.152,.108,hd,{s:[1,.75,.45]});A(sph(.0105,10,8),iris,sd*.042,.152,.116,hd,{s:[1,1,.4]});
-    A(box(.058,.016,.014),hair,sd*.043,.187,.108,hd,{rz:sd*.14});A(box(.02,.075,.03),beard,sd*.108,.115,0,hd);A(sph(.021,10,8),beard,sd*.02,.093,.117,hd,{s:[1.7,.55,.6]})});
-  A(sph(.02,10,8),skin,0,.118,.121,hd,{s:[1,1.3,1.1]});A(sph(.012,8,6),skin,0,.145,.116,hd);A(sph(.02,10,8),beard,0,.092,.118,hd,{s:[1.2,.5,.5]});
-  A(new THREE.SphereGeometry(.119,28,18,HP-1.85,3.7,1.72,Math.PI-1.72),beard,0,.13,0,hd,{s:[1,1.16,1.06]});
-  A(new THREE.TorusGeometry(.022,.0045,6,14,Math.PI),lip,0,.07,.118,hd,{rz:Math.PI});A(sph(.016,8,6),white,0,.063,.115,hd,{s:[1.6,.3,.35]});
-  A(new THREE.SphereGeometry(.123,28,16,0,TAU,0,.8),hair,0,.13,-.004,hd,{s:[1,1.16,1.07]});
-  A(new THREE.SphereGeometry(.117,28,14,HP+.95,TAU-1.9,0,1.5),hair,0,.13,0,hd,{s:[1,1.16,1.06]});
-  A(sph(.07,12,8),hair,0,.235,.015,hd,{s:[1.15,.5,1.3]});A(sph(.045,10,8),hair,0,.225,.075,hd,{s:[1.3,.6,.9]});
-  for(let i=0;i<26;i++){const a=i/26*TAU;A(sph(.03,8,6),i%2?mg1:mg2,Math.sin(a)*.215,.47-.24*Math.pow(Math.max(0,Math.cos(a)),1.5),Math.cos(a)*.16+.01,j.spine)}
-  const tap=J(j.haR,0,-.03,0),tapF=J(tap,0,-.36,0);tap.visible=false;
-  A(cyl(.0075,.0075,.34,8),M(0xf6e9c9,{roughness:.6}),0,-.19,0,tap);
-  const tf=new THREE.Mesh(sph(.011,8,6),MB(0xffd27a));tf.scale.set(1,2.6,1);tf.position.y=.012;tapF.add(tf);tapF.add(ujG(0,.02,0,.3,0xffa24a));
-  const tag=new THREE.Sprite(new THREE.SpriteMaterial({map:CT(512,128,(g,w,h)=>{g.fillStyle="rgba(20,8,2,.74)";rrect(g,6,14,w-12,h-28,24);g.fill();g.strokeStyle="#f4c430";g.lineWidth=3;g.stroke();g.textAlign="center";g.fillStyle="#ffe7a8";g.font="700 40px Georgia,serif";g.fillText("Chintan Nagrecha Sir",w/2,62);g.fillStyle="#fff";g.font="26px system-ui,sans-serif";g.fillText("Director · INFOLABZ",w/2,98)}),transparent:true,depthWrite:false,depthTest:false,toneMapped:false}));
-  tag.scale.set(.95,.24,1);tag.position.set(0,2.2,0);tag.renderOrder=6;root.add(tag);
-  return{root,j,tap,tag,P:{hidden:false,j:{head:j.head}}}})();
-const UJL=LOW?null:new THREE.SpotLight(lin(0xfff1d6),0,9,.42,.65,1);if(UJL)S.add(UJL,UJL.target);
-const ujE=u=>u<=0?0:u>=1?1:u*u*(3-2*u);
-function ujPose(t,m,u){const j=UJD.j,s=Math.sin;for(const k of UJN)j[k].rotation.set(0,0,0);j.pelvis.position.y=.93;
-  j.spine.rotation.x=.012*s(t*1.6);j.shL.rotation.z=.06;j.shR.rotation.z=-.06;j.elL.rotation.x=j.elR.rotation.x=-.12;
-  if(m==="walk"){const w=UJ.w;j.hpL.rotation.x=-.5*s(w);j.hpR.rotation.x=.5*s(w);j.knL.rotation.x=.45*Math.max(0,s(w+1.2));j.knR.rotation.x=.45*Math.max(0,-s(w+1.2));
-    j.shL.rotation.x=.35*s(w);j.shR.rotation.x=-.35*s(w);j.pelvis.position.y+=.02*Math.abs(s(w));j.head.rotation.y=.08*s(w*.5)}
-  else if(m==="pray"){j.shL.rotation.x=j.shR.rotation.x=-.55;j.shL.rotation.z=-.5;j.shR.rotation.z=.5;j.elL.rotation.x=j.elR.rotation.x=-1.78;j.elL.rotation.y=.25;j.elR.rotation.y=-.25;j.head.rotation.x=.12+.06*s(t*.9);j.head.rotation.y=.12*s(t*.5)}
-  else if(m==="reach"){j.spine.rotation.x=.3*u;j.shR.rotation.x=-(.25+.85*u);j.elR.rotation.x=-(.12+.1*u);j.shL.rotation.x=-.12-.4*u;j.elL.rotation.x=-.12-.9*u;j.head.rotation.x=.25*u}
-  else if(m==="wave"){j.shR.rotation.z=-2.35;j.elR.rotation.z=-(.3+.5*s(t*8));j.shR.rotation.x=-.1;j.shL.rotation.x=-.5;j.shL.rotation.z=-.4;j.elL.rotation.x=-1.4;j.head.rotation.z=.06*s(t*2);j.head.rotation.y=.2*s(t*.8)}
-  else{j.head.rotation.y=.2*s(t*.5)}}
-function ujStep(dt,path,sp){const tg=path[UJ.pi],dx=tg[0]-UJ.x,dz=tg[1]-UJ.z,d=Math.hypot(dx,dz);
-  if(d<.08){UJ.pi++;return UJ.pi>=path.length}
-  const st=Math.min(d,sp*dt);UJ.x+=dx/d*st;UJ.z+=dz/d*st;UJ.rot=angLerp(UJ.rot,Math.atan2(dx,dz),Math.min(1,dt*6));UJ.w+=dt*sp*3.7;return false}
-const ujHint=on=>$("#dyh").classList.toggle("show",on);
-function ujStart(){if(FX.cur!=="diya"||UJ.ph!=="wait")return;UJ.ph="light";UJ.tc=FX.t;UJ.struck=false;ujHint(false)}
-function ujIgnite(t){UJ.lit=true;UJ.tLit=t;UJ.ph="after";FX.list.diya.dur=t+19;
-  for(let k=0;k<60;k++)SPARK.spawn(UJC.x+rr(-.06,.06),1.12,UJC.z+rr(-.06,.06),rr(-.9,.9),rr(.9,2.6),rr(-.9,.9),rr(.7,1.5),1.7,1.05,.35,.06,.01,1);
-  FXL.position.set(UJC.x,1.3,UJC.z);FXL.intensity=8;snd.bell();snd.chime();finPad(17);ILA.say(["Shubh Deepavali!"])}
-const ujPick=(a,k)=>a[Math.min(k,a.length-1)];
-defFX("diya",{dur:9999,title:"🪔 Ujval Diya: Chintan Sir will light the first diya",bye:"Shubh Deepavali! Back to the party",
-  bot:{pt:[UJC.x-1.15,UJC.z-.2],face:1.4,mode:()=>UJ.lit?(UJ.tl<7?"cheer":"aarti"):"idle",say:["Sir, please light the first diya!"]},
-  start(){this.dur=9999;Object.assign(UJ,{ph:"walk",lit:false,tl:-1,pi:1,x:UJPATH[0][0],z:UJPATH[0][1],rot:Math.PI,w:0,fired:new Uint8Array(ND),ev:{},pp:0,ret:0,struck:false,crowd:[]});
-    UJS.visible=true;UJD.root.visible=true;UJD.tag.material.opacity=1;UJMF.scale.set(0,0,0);UJMG.visible=false;UJML.intensity=0;UJT.forEach(o=>{o.f.scale.set(0,0,0);o.g.visible=false});
-    document.body.classList.add("diyamode");ujHint(false);
-    const cand=PEOPLE.filter(p=>!p.hidden&&!p.path&&!p.fw&&!p.ns&&p.seat===undefined&&p!==trainer&&Math.hypot(p.x-UJC.x,p.z-UJC.z)<6.5).sort((a,b)=>Math.hypot(a.x-UJC.x,a.z-UJC.z)-Math.hypot(b.x-UJC.x,b.z-UJC.z));
-    const sl=[];[-1,1].forEach(sd=>[1.9,2.8,3.7].forEach(u=>[-1.9,-1,-.1,.8].forEach(w=>sl.push([UJC.x+sd*u,UJC.z+w]))));
-    const imp=a=>Math.abs(a[0]-UJC.x)+.5*Math.abs(a[1]-UJC.z+.9);sl.sort((a,b)=>imp(a)-imp(b));
-    const n=Math.min(cand.length,sl.length),use=sl.slice(0,n).sort((a,b)=>a[0]-b[0]||a[1]-b[1]),who=cand.slice(0,n).sort((a,b)=>a.x-b.x||a.z-b.z);
-    who.forEach((p,i)=>{const q=use[i],h=homeOf(p);p.fw={st:"go",hx:h?h.h[0]:p.x,hz:h?h.h[1]:p.z,hface:h?Math.atan2(h.c[0]-h.h[0],h.c[1]-h.h[1]):p.face};
-      p.ujf=Math.atan2(UJC.x-q[0],UJC.z-q[1]);p.face=p.ujf;p.fxCrouch=false;p.path=[[p.x,p.z],[q[0],q[1]]];p.pi=1;p.delay=rr(0,.9);UJ.crowd.push(p)})},
-  tick(dt,t){const j=UJD.j;let mode="pray",u=0;
-    if(UJ.lit)UJ.tl=t-UJ.tLit;const tl=UJ.tl;
-    if(UJ.ph==="walk"){mode="walk";if(ujStep(dt,UJPATH,1.5)){UJ.ph="wait";ujHint(true);say(UJD.P,["Namaste, everyone!"]);ILA.say(["Sir, please light the first diya!"]);snd.chime()}}
-    else if(UJ.ph==="wait"){UJ.rot=angLerp(UJ.rot,0,Math.min(1,dt*3))}
-    else if(UJ.ph==="light"){UJ.rot=angLerp(UJ.rot,0,Math.min(1,dt*5));const tr=t-UJ.tc;mode="reach";u=ujE((tr-.3)/1.2);
-      if(tr>=.25&&!UJ.struck){UJ.struck=true;UJD.tap.visible=true;snd.hiss(.35,3500,.25)}
-      if(tr>=1.8)ujIgnite(t)}
-    else if(UJ.ph==="after"){UJ.rot=angLerp(UJ.rot,0,Math.min(1,dt*4));
-      if(tl<.9){mode="reach";u=1-ujE(tl/.9)}else{UJD.tap.visible=false;mode=tl<7.5?"pray":"wave"}
-      if(tl>=13){UJ.ph="exit";UJ.path=[[UJ.x,UJ.z],...UJPATH.slice(0,-1).reverse()];UJ.pi=1}}
-    else if(UJ.ph==="exit"){mode="walk";if(ujStep(dt,UJ.path,1.4)){UJ.ph="gone";UJD.root.visible=false}}
-    if(UJD.root.visible){UJD.root.position.set(UJ.x,0,UJ.z);UJD.root.rotation.y=UJ.rot;ujPose(t,mode,u);UJD.tag.material.opacity=UJ.lit?clamp(1-(tl-4)/1.5,0,1):1}
-    // spotlight follows Sir while the room is dark
-    if(UJL){UJL.position.set(UJ.x+.3,2.9,UJ.z+1.1);UJL.target.position.set(UJ.x,1.2,UJ.z);UJL.intensity=UJD.root.visible?1.7*clamp(t/1.5,0,1)*(UJ.lit?1-.85*clamp((tl-2)/3,0,1):1):0}
-    // flames + glow on the stand
-    if(UJ.lit){const f=1+.12*Math.sin(now*17)+.06*Math.sin(now*29),k=Math.min(1,tl/.5);UJMF.scale.set(k*f,k*(.9+.2*f),k*f);UJMG.visible=true;UJMG.scale.setScalar(1.2*k*(.92+.1*f));UJML.intensity=1.7*k*(.9+.1*f);
-      UJT.forEach((o,i)=>{const ki=clamp((tl-.5-i*.18)/.3,0,1);o.f.scale.set(ki*f,ki*1.1,ki*f);o.g.visible=ki>0;o.g.scale.setScalar(.3*ki*(.9+.15*f))});
-      if(Math.random()<dt*(LOW?10:22))SPARK.spawn(UJC.x+rr(-.08,.08),1.12,UJC.z+rr(-.08,.08),rr(-.2,.2),rr(.5,1.1),rr(-.2,.2),rr(.9,1.6),1.5,.9,.3,.035,.005,.9)}
-    // crowd, ILA and ceremony events
-    UJ.crowd.forEach(p=>{if(p.fw&&p.fw.st==="there")p.face=p.ujf});
-    live().forEach(p=>{const sit=p.seat!==undefined;p.mode=sit?(UJ.lit?(tl<6?"sitAdmire":"sitCheer"):"sitPray"):(UJ.lit?(tl<1.2?"awe":tl<6?"admire":"cheer"):"pray")});
-    if(UJ.lit){chat(dt,.5,["Shubh Deepavali!","Happy Diwali Sir!","Jai Ho!","Ujval Diwali!","Wah, kya baat hai!"]);
-      if(tl>=2&&!UJ.ev.a){UJ.ev.a=1;say(UJD.P,["Shubh Deepavali to the whole Infolabz family!"])}
-      if(tl>=7.5&&!UJ.ev.b){UJ.ev.b=1;ILA.say(["Happy Diwali, Chintan Sir!"])}
-      if(tl>=4.5&&tl<14){UJ.pp+=dt*(LOW?5:9);while(UJ.pp>=1){UJ.pp--;rainSpawn(PETR,{x:UJC.x+rr(-3.5,3.5),y:2.95,z:UJC.z+rr(-3,3),vx:rr(-.15,.15),vy:-.2,vz:rr(-.15,.15),wx:rr(-2,2),wy:rr(-2,2),wz:rr(-2,2)})}}}},
-  end(){UJD.root.visible=false;UJS.visible=false;UJD.tap.visible=false;UJML.intensity=0;if(UJL)UJL.intensity=0;ujHint(false);document.body.classList.remove("diyamode");UJ.ph="off";UJ.ret=2.4;UJ.lit=false;
-    PEOPLE.forEach(p=>{if(p.fw&&(p.fw.st==="there"||p.fw.st==="go"))sendHome(p,rr(0,1.2));p.ujf=undefined});
-    COINR.a.forEach(b=>{});PETR.a.forEach(b=>{if(b.on)b.fade=1});
-    LAN.forEach((l,i)=>{lgCol.set(WARM,i*3);l.piv.traverse(o=>{const mt=o.material;if(o.isMesh&&mt&&mt.userData&&mt.userData.eb)mt.emissiveIntensity=mt.userData.eb})});lgGeo.attributes.color.needsUpdate=true;logoMat.emissiveIntensity=.8},
-  lights(t){const lit=UJ.lit,tl=UJ.tl,dk=.08,dark=lerp(1,dk,clamp(t/2,0,1)),gg=lit?dk+(1-dk)*ujE((tl-3.3)/4.2):dark;
-    const W=(x,y,z,dl,sp,fd)=>lit?clamp((tl-dl-Math.hypot(x-UJC.x,y-1,z-UJC.z)/sp)*fd,0,1):0;
-    R.toneMappingExposure*=.55+.45*gg;hemi.intensity*=gg;spot.intensity*=gg;ledM.color.multiplyScalar(gg);ceilM.emissiveIntensity*=gg;logoMat.emissiveIntensity=.8*Math.max(.12,gg);
-    PLS.forEach(o=>{const q=o.l.position;o.l.intensity*=(o.k===0||o.k===3)?gg:W(q.x,q.y,q.z,1,3,3)});
-    for(let i=0;i<ND;i++){const q=DY[i],m=W(q.x,q.y,q.z,1.2+(i*.37%.3),3,5);
-      if(m<.02)flame.setMatrixAt(i,ZM);else if(!UJ.fired[i]){UJ.fired[i]=1;for(let k=0;k<(LOW?1:3);k++)SPARK.spawn(q.x,q.y+.08,q.z,rr(-.15,.15),rr(.4,.9),rr(-.15,.15),.7,1.5,.9,.35,.05,.01,.9);if(now-UJ.plopAt>.07){UJ.plopAt=now;snd.plop()}}
-      dgCol[i*3]*=m;dgCol[i*3+1]*=m;dgCol[i*3+2]*=m}
-    flame.instanceMatrix.needsUpdate=true;dgGeo.attributes.color.needsUpdate=true;
-    for(let i=0;i<NFP;i++){const m=W(fpPos[i*3],fpPos[i*3+1],fpPos[i*3+2],.9,3.4,3.5);fpCol[i*3]*=m;fpCol[i*3+1]*=m;fpCol[i*3+2]*=m}
-    hlIdx.forEach((i,n)=>{hlCol[n*3]=fpCol[i*3];hlCol[n*3+1]=fpCol[i*3+1];hlCol[n*3+2]=fpCol[i*3+2]});fpGeo.attributes.color.needsUpdate=hlGeo.attributes.color.needsUpdate=true;
-    LAN.forEach((l,i)=>{const q=l.piv.position,m=W(q.x,q.y-1,q.z,1.1,3,3);lgCol[i*3]=m;lgCol[i*3+1]=.55*m;lgCol[i*3+2]=.25*m;
-      l.piv.traverse(o=>{const mt=o.material;if(o.isMesh&&mt&&mt.emissive&&(mt.userData.eb||mt.emissiveIntensity>=1)){mt.userData.eb=mt.userData.eb||mt.emissiveIntensity;mt.emissiveIntensity=mt.userData.eb*(.04+.96*m)}})});
-    lgGeo.attributes.color.needsUpdate=true},
-  slide(g,w,h,t){if(!UJ.lit){g.fillStyle="#05070d";g.fillRect(0,0,w,h);g.fillStyle="rgba(255,200,110,.55)";g.font="bold 64px Georgia,serif";g.fillText("🪔",w/2,250);g.font="30px Georgia,serif";g.fillStyle="rgba(255,225,170,.6)";g.fillText("Ujval Diya",w/2,330);return}
-    const k=clamp(UJ.tl/3,0,1),b=g.createRadialGradient(w/2,h/2,30,w/2,h/2,560);b.addColorStop(0,"#ffe08a");b.addColorStop(1,"#7a3a05");g.globalAlpha=k;g.fillStyle=b;g.fillRect(0,0,w,h);
-    g.fillStyle="#6e0b19";g.font="bold 120px 'Tiro Devanagari Hindi',Georgia,serif";g.fillText("शुभ दीपावली",w/2,230);g.font="44px Georgia,serif";g.fillText("Shubh Deepavali",w/2,305);
-    g.font="28px Georgia,serif";g.fillStyle="#3a1a00";g.fillText("The first diya was lit by Chintan Nagrecha Sir",w/2,400);g.fillText("Jashn-e-Infolabz · Diwali 2026",w/2,445);g.globalAlpha=1}});
-// camera: follows the ceremony, then pulls back to show the light spreading
-function ujCam(rdt){const on=FX.cur==="diya";if(!on&&UJ.ret<=0)return false;if(dragging)return false;
-  const k=Math.min(1,rdt*1.3),m=innerWidth/innerHeight<.8?1.8:1;let Y=0,P=.11,D=8.6,T=[.6,1.25,-2];
-  if(on){const tl=UJ.tl;
-    if(UJ.ph==="walk"){D=6.4*m;P=.12;T=[.35,1.25,-1.3]}
-    else if(UJ.ph==="wait"||UJ.ph==="light"||(UJ.lit&&tl<2.5)){D=3.7*m;P=.07;T=[.35,1.3,-.9]}
-    else{D=8.4*m;P=.16;T=[.3,1.3,-1.6]}}
-  else UJ.ret-=rdt;
-  yaw=angLerp(yaw,Y,k);pit=lerp(pit,P,k);dist=lerp(dist,D,k);tgt.x=lerp(tgt.x,T[0],k);tgt.y=lerp(tgt.y,T[1],k);tgt.z=lerp(tgt.z,T[2],k);idle=0;return true}
-document.body.insertAdjacentHTML("beforeend",'<button id="dyh">🪔 Tap Chintan Sir to light the diya</button><button id="dyx">✕ Exit</button>');
-$("#dyh").onclick=ujStart;$("#dyx").onclick=()=>endFX();$("#dyb").onclick=()=>startFX("diya");
-{const ray=new THREE.Raycaster(),mv=new THREE.Vector2();let dn=null;
-  cv.addEventListener("pointerdown",e=>{dn=[e.clientX,e.clientY]});
-  cv.addEventListener("pointerup",e=>{if(FX.cur!=="diya"||UJ.ph!=="wait"||!dn)return;if(Math.hypot(e.clientX-dn[0],e.clientY-dn[1])>8)return;
-    const r=cv.getBoundingClientRect();mv.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);ray.setFromCamera(mv,cam);
-    if(ray.intersectObjects([UJD.root,UJS],true).length)ujStart()})}
-addEventListener("keydown",e=>{if(e.key==="Escape"&&FX.cur==="diya")endFX()});
-
 /* party menu (hanging lantern toggle) */
 {const mn=$("#mnu"),mm=$("#menu"),set=o=>{mm.classList.toggle("open",o);mn.classList.toggle("open",o);mn.setAttribute("aria-expanded",o);mm.setAttribute("aria-hidden",!o)};
   mn.onclick=()=>set(!mm.classList.contains("open"));
@@ -2088,7 +1929,7 @@ function frame(){requestAnimationFrame(frame);const rdt=Math.min(.05,clk.getDelt
   // camera
   const fc=FX.cur==="finale"&&!dragging?FX.list.finale.cam(FX.t):null;
   if(GAME.st!=="off"){const k=Math.min(1,rdt*2.2),o=GAME.st==="out";yaw=angLerp(yaw,o?0:-HP,k);pit=lerp(pit,o?.11:0,k);dist=lerp(dist,o?8.6:GAME.d,k);tgt.lerp(o?GDEF:GAME.t,k);idle=0}
-  else if(ujCam(rdt)){}
+  
   else if(fc){const dx=fc[0]-fc[3],dy=fc[1]-fc[4],dz=fc[2]-fc[5],D=Math.hypot(dx,dy,dz),k=Math.min(1,rdt*1.1);yaw=angLerp(yaw,Math.atan2(dx,dz),k);pit=lerp(pit,Math.asin(dy/D),k);dist=lerp(dist,D,k);tgt.lerp(v3.set(fc[3],fc[4],fc[5]),k);idle=0}
   else if(FX.cur==="finale"&&!dragging&&FX.t>17){const k=Math.min(1,rdt*.9);yaw=angLerp(yaw,0,k);pit=lerp(pit,.11,k);dist=lerp(dist,8.6,k);tgt.lerp(v3.set(.6,1.25,-2),k);idle=0}
   else if(!dragging){idle+=dt;yaw=lerp(yaw,Math.sin(idle*.12)*.32,Math.min(1,dt*.6))}
